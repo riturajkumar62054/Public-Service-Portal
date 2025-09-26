@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Documents - Public Services Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Identity Documents</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Back to Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="documents-container">
+            <div class="documents-header">
+                <h2>Your Identity Documents</h2>
+                <p>View and manage your important identity documents in one place</p>
+            </div>
+
+            <div class="documents-grid">
+                <div class="document-card">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Aadhaar Card</h3>
+                    <p>Your unique identification number</p>
+                    <button class="view-document" onclick="showDocument('aadhaar')">View Details</button>
+                </div>
+
+                <div class="document-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Passport</h3>
+                    <p>International travel document</p>
+                    <button class="view-document" onclick="showDocument('passport')">View Details</button>
+                </div>
+
+                <div class="document-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>PAN Card</h3>
+                    <p>Permanent Account Number</p>
+                    <button class="view-document" onclick="showDocument('pan')">View Details</button>
+                </div>
+
+                <div class="document-card">
+                    <i class="fas fa-car"></i>
+                    <h3>Driving License</h3>
+                    <p>Vehicle operation permit</p>
+                    <button class="view-document" onclick="showDocument('license')">View Details</button>
+                </div>
+            </div>
+
+            <div class="document-details" id="document-details">
+                <div class="details-header">
+                    <h3 id="document-title">Document Details</h3>
+                    <button class="close-details" onclick="hideDocument()">×</button>
+                </div>
+                <div class="details-content" id="details-content">
+                    <!-- Document details will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Public Services Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample document data
+        const documents = {
+            aadhaar: {
+                title: "Aadhaar Card Details",
+                content: `
+                    <div class="document-info">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Aadhaar Number:</strong> XXXX XXXX XXXX</p>
+                        <p><strong>Date of Birth:</strong> 01/01/1990</p>
+                        <p><strong>Address:</strong> 123 Main Street, City, State</p>
+                        <p><strong>Issued Date:</strong> 01/01/2015</p>
+                    </div>
+                `
+            },
+            passport: {
+                title: "Passport Details",
+                content: `
+                    <div class="document-info">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Passport Number:</strong> XXXX XXXX</p>
+                        <p><strong>Nationality:</strong> Indian</p>
+                        <p><strong>Date of Issue:</strong> 01/01/2020</p>
+                        <p><strong>Date of Expiry:</strong> 01/01/2030</p>
+                    </div>
+                `
+            },
+            pan: {
+                title: "PAN Card Details",
+                content: `
+                    <div class="document-info">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>PAN Number:</strong> XXXX XXXX X</p>
+                        <p><strong>Date of Issue:</strong> 01/01/2018</p>
+                    </div>
+                `
+            },
+            license: {
+                title: "Driving License Details",
+                content: `
+                    <div class="document-info">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>License Number:</strong> XXXX XXXX XXXX</p>
+                        <p><strong>Date of Issue:</strong> 01/01/2019</p>
+                        <p><strong>Valid Until:</strong> 01/01/2029</p>
+                        <p><strong>Vehicle Classes:</strong> LMV, MCWG</p>
+                    </div>
+                `
+            }
+        };
+
+        function showDocument(type) {
+            const detailsDiv = document.getElementById('document-details');
+            const titleDiv = document.getElementById('document-title');
+            const contentDiv = document.getElementById('details-content');
+
+            titleDiv.textContent = documents[type].title;
+            contentDiv.innerHTML = documents[type].content;
+            detailsDiv.style.display = 'block';
+        }
+
+        function hideDocument() {
+            document.getElementById('document-details').style.display = 'none';
+        }
+    </script>
+</body>
+</html> 
